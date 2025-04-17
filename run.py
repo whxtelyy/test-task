@@ -4,15 +4,13 @@ import json
 def check_capacity(max_capacity: int, guests: list) -> bool:
     datas = []
     occupied_rooms = 0
-    if 0 < max_capacity < 10**5:
-        for guest in guests:
-            if guest['check-in'] < guest['check-out']:
-                datas.append((guest['check-in'],1))
-                datas.append((guest['check-out'],-1))
-        for data, status in sorted(datas):
-            occupied_rooms += status
-            if occupied_rooms > max_capacity:
-                return False
+    for guest in guests:
+        datas.append((guest['check-in'],1))
+        datas.append((guest['check-out'],-1))
+    for data, status in sorted(datas):
+        occupied_rooms += status
+        if occupied_rooms > max_capacity:
+            return False
     return True
 
 
