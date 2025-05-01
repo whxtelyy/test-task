@@ -14,20 +14,19 @@ def get_input():
 
 def min_steps_to_collect_all_keys(data):
     robots = []
-    key_position = {}
+    keys_positions = {}
     x,y= len(data),len(data[0])
     for row in range(x):
-        for col in range(y):
-            cell = data[row][col]
+        for column in range(y):
+            cell = data[row][column]
             if cell == "@":
-                robots.append((row,col))
+                robots.append((row,column))
             elif cell in keys_char:
-                key_position[(row, col)] = cell
-
-    all_keys = set(key_position.values())
+                keys_positions[(row, column)] = cell
+    keys = set(keys_positions.values())
 
     points = robots[:]
-    for coord in key_position:
+    for coord in keys_positions:
         points.append(coord)
 
     quantity = len(points)
