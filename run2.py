@@ -41,11 +41,11 @@ def min_steps_to_collect_all_keys(data):
                     continue
 
             for dist_x, dist_y in ((1,0),(-1,0),(0,1),(0,-1)):
-                next_x, next_y = x + dist_x, y + dist_y
+                next_x, next_y = x_key + dist_x, y_key + dist_y
                 if (0 <= next_x < x) and (0 <= next_y < y):
                     if (next_x, next_y) not in visited:
                         next_cell = data[next_x][next_y]
-                        if next_cell != "#":
+                        if next_cell == "#":
                             continue
                         if next_cell in doors_char and next_cell.lower() not in keys:
                             continue
